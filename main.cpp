@@ -10,6 +10,8 @@ const int MAX_GPA_COUNT = 35;
 void readGPAsFromFile(array<double, MAX_GPA_COUNT>&);
 void outputGPAs(const array<double, MAX_GPA_COUNT>&);
 void swapGPAs();
+void fillGPAs();
+bool findGPA(const array<double, MAX_GPA_COUNT>&, double);
 
 int main()
 {
@@ -28,15 +30,24 @@ int main()
     cout << "Front: " << gpaList.front() << endl;
     cout << "Back: " << gpaList.back() << endl;
 
-    cout << "Sorting the GPA list in the descending order." << endl;
+    cout << endl << "Sorting the GPA list in the descending order." << endl;
     sort(gpaList.rbegin(), gpaList.rend());
     outputGPAs(gpaList);
 
-    cout << "Sorting the GPA list in the ascending order." << endl;
+    cout << endl << "Sorting the GPA list in the ascending order." << endl;
     sort(gpaList.begin(), gpaList.end());
     outputGPAs(gpaList);
 
+    cout << endl << "Swapping two GPA lists." << endl;
     swapGPAs();
+
+    cout << endl << "Filling the GPA list with 4.0." << endl;
+    fillGPAs();
+
+    cout << endl << "Finding a GPA in the list." << endl;
+    double gpaToFind = 3.75;
+    cout << "Is " << gpaToFind << " in the GPA list? " 
+         << (findGPA(gpaList, gpaToFind) ? "Yes" : "No") << endl;
 
     return 0;
 }
@@ -72,17 +83,34 @@ void swapGPAs()
     array<double, 4> gpaList2 = {2.5, 2.7, 2.9, 3.1};
 
     cout << "Before swap:" << endl;
-    for(double gpa : gpaList1) cout << gpa << " ";
+    for (int i = 0; i < gpaList1.size(); ++i) cout << gpaList1[i] << " ";
     cout << endl;
-    for(double gpa : gpaList2) cout << gpa << " ";
+    for (int i = 0; i < gpaList2.size(); ++i) cout << gpaList2[i] << " ";
     cout << endl;
 
     gpaList1.swap(gpaList2);
 
     cout << "After swap:" << endl;
-    for(double gpa : gpaList1) cout << gpa << " ";
+    for (int i = 0; i < gpaList1.size(); ++i) cout << gpaList1[i] << " ";
     cout << endl;
-    for(double gpa : gpaList2) cout << gpa << " ";
+    for (int i = 0; i < gpaList2.size(); ++i) cout << gpaList2[i] << " ";
     cout << endl;
-    
+}
+
+void fillGPAs()
+{
+    array<double, 4> gpaList;
+    gpaList.fill(4.0);
+    for (int i = 0; i < gpaList.size(); ++i) cout << gpaList[i] << " ";
+    cout << endl;
+}
+
+bool findGPA(const array<double, MAX_GPA_COUNT>& gpaList, double gpa)
+{
+    for (int i = 0; i < gpaList.size(); ++i)
+    {
+        if (gpa == gpaList[i]) return true;
+    }
+
+    return false;
 }
