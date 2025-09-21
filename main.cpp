@@ -15,16 +15,16 @@ bool findGPA(const array<double, MAX_GPA_COUNT>&, double);
 
 int main()
 {
-    // Comment #: Declare an array to hold GPA values.
+    // Comment #2: Declare an array to hold GPA values.
     array<double, MAX_GPA_COUNT> gpaList;
 
-    // Comment #: Read GPA values from the file into the array.
+    // Comment #3: Read GPA values from the file into the array.
     readGPAsFromFile(gpaList);
 
-    // Comment #: Output the GPA values to the console.
+    // Comment #4: Output the GPA values to the console.
     outputGPAs(gpaList);
 
-    // Comment #: Check if the GPA list is empty and output the result.
+    // Comment #5: Check if the GPA list is empty and output the result.
     cout << endl << "Is the GPA list empty? " << (gpaList.empty() ? "Yes" : "No") << endl;
 
     cout << "Front: " << gpaList.front() << endl;
@@ -49,28 +49,30 @@ int main()
     cout << "Is " << gpaToFind << " in the GPA list? " 
          << (findGPA(gpaList, gpaToFind) ? "Yes" : "No") << endl;
 
+    cout << endl << "STD::Array data: " << gpaList.data() << endl;
+
     return 0;
 }
 
-// Comment #: Function to read GPA values from a file into the gpaList array.
+// Comment #6: Function to read GPA values from a file into the gpaList array.
 void readGPAsFromFile(array<double, MAX_GPA_COUNT>& gpaList)
 {
-    // Comment #: Open the input file.
+    // Comment #7: Open the input file.
     ifstream inputFile("gpas.txt");
     
-    // Comment #: Read GPA values from the file into the array.
+    // Comment #8: Read GPA values from the file into the array.
     for (int i = 0; i < gpaList.size(); ++i)
     {
         inputFile >> gpaList[i];
     }
 
-    // Comment #: Close the input file.
+    // Comment #9: Close the input file.
     inputFile.close();
 }
 
 void outputGPAs(const array<double, MAX_GPA_COUNT>& gpaList)
 {
-    // Comment #: Output the GPA values to the console.
+    // Comment #10: Output the GPA values to the console.
     for (int i = 0; i < gpaList.size(); ++i)
     {
         cout << fixed << setprecision(2) << gpaList.at(i) << endl;
@@ -88,6 +90,7 @@ void swapGPAs()
     for (int i = 0; i < gpaList2.size(); ++i) cout << gpaList2[i] << " ";
     cout << endl;
 
+    // Comment #11: Swap the contents of the two GPA lists.
     gpaList1.swap(gpaList2);
 
     cout << "After swap:" << endl;
@@ -100,7 +103,9 @@ void swapGPAs()
 void fillGPAs()
 {
     array<double, 4> gpaList;
-    gpaList.fill(4.0);
+
+    // Comment #12: Fill the GPA list with the value 4.
+    gpaList.fill(4);
     for (int i = 0; i < gpaList.size(); ++i) cout << gpaList[i] << " ";
     cout << endl;
 }
@@ -109,6 +114,7 @@ bool findGPA(const array<double, MAX_GPA_COUNT>& gpaList, double gpa)
 {
     for (int i = 0; i < gpaList.size(); ++i)
     {
+        // Comment #13: Check if the specified GPA exists in the list.
         if (gpa == gpaList[i]) return true;
     }
 
