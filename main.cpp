@@ -9,6 +9,7 @@ const int MAX_GPA_COUNT = 35;
 
 void readGPAsFromFile(array<double, MAX_GPA_COUNT>&);
 void outputGPAs(const array<double, MAX_GPA_COUNT>&);
+void swapGPAs();
 
 int main()
 {
@@ -30,6 +31,12 @@ int main()
     cout << "Sorting the GPA list in the descending order." << endl;
     sort(gpaList.rbegin(), gpaList.rend());
     outputGPAs(gpaList);
+
+    cout << "Sorting the GPA list in the ascending order." << endl;
+    sort(gpaList.begin(), gpaList.end());
+    outputGPAs(gpaList);
+
+    swapGPAs();
 
     return 0;
 }
@@ -57,4 +64,25 @@ void outputGPAs(const array<double, MAX_GPA_COUNT>& gpaList)
     {
         cout << fixed << setprecision(2) << gpaList.at(i) << endl;
     }
+}
+
+void swapGPAs()
+{
+    array<double, 4> gpaList1 = {3.5, 3.7, 3.9, 4.1};
+    array<double, 4> gpaList2 = {2.5, 2.7, 2.9, 3.1};
+
+    cout << "Before swap:" << endl;
+    for(double gpa : gpaList1) cout << gpa << " ";
+    cout << endl;
+    for(double gpa : gpaList2) cout << gpa << " ";
+    cout << endl;
+
+    gpaList1.swap(gpaList2);
+
+    cout << "After swap:" << endl;
+    for(double gpa : gpaList1) cout << gpa << " ";
+    cout << endl;
+    for(double gpa : gpaList2) cout << gpa << " ";
+    cout << endl;
+    
 }
